@@ -1,2424 +1,2424 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "K9",
-    "description": "Project K9",
-    "version": "1.0",
-    "contact": {}
-  },
-  "tags": [
-    {
-      "name": "Homepage",
-      "description": ""
+    "openapi": "3.0.0",
+    "info": {
+        "title": "K9",
+        "description": "Project K9",
+        "version": "1.0",
+        "contact": {}
     },
-    {
-      "name": "Address",
-      "description": ""
-    },
-    {
-      "name": "Auth",
-      "description": ""
-    },
-    {
-      "name": "Breeds",
-      "description": ""
-    },
-    {
-      "name": "Causes Of Death",
-      "description": ""
-    },
-    {
-      "name": "Dogs",
-      "description": ""
-    },
-    {
-      "name": "Kennels",
-      "description": ""
-    },
-    {
-      "name": "Knowledge Base",
-      "description": ""
-    },
-    {
-      "name": "Users",
-      "description": ""
-    }
-  ],
-  "servers": [],
-  "components": {
-    "securitySchemes": {
-      "bearer": {
-        "scheme": "bearer",
-        "bearerFormat": "JWT",
-        "type": "http"
-      }
-    },
-    "schemas": {
-      "UserLoginDTO": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "format": "email",
-            "default": "{{email}}"
-          },
-          "password": {
-            "type": "string",
-            "default": "{{password}}"
-          }
+    "tags": [
+        {
+            "name": "Homepage",
+            "description": ""
         },
-        "required": [
-          "email",
-          "password"
-        ]
-      },
-      "TokenJWTOAPI": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "type": "string"
-          }
+        {
+            "name": "Address",
+            "description": ""
         },
-        "required": [
-          "token"
-        ]
-      },
-      "ProviderLoginDTO": {
-        "type": "object",
-        "properties": {
-          "accessToken": {
-            "type": "string"
-          }
+        {
+            "name": "Auth",
+            "description": ""
         },
-        "required": [
-          "accessToken"
-        ]
-      },
-      "AddressDTO": {
-        "type": "object",
-        "properties": {
-          "country": {
-            "type": "string"
-          },
-          "state": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "street": {
-            "type": "string"
-          },
-          "zip": {
-            "type": "string"
-          }
+        {
+            "name": "Breeds",
+            "description": ""
+        },
+        {
+            "name": "Causes Of Death",
+            "description": ""
+        },
+        {
+            "name": "Dogs",
+            "description": ""
+        },
+        {
+            "name": "Kennels",
+            "description": ""
+        },
+        {
+            "name": "Knowledge Base",
+            "description": ""
+        },
+        {
+            "name": "Users",
+            "description": ""
         }
-      },
-      "UserSignUpDTO": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "format": "email",
-            "default": "{{email}}"
-          },
-          "password": {
-            "type": "string",
-            "default": ""
-          },
-          "repeatPassword": {
-            "type": "string",
-            "default": ""
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "gender": {
-            "type": "boolean"
-          },
-          "address": {
-            "$ref": "#/components/schemas/AddressDTO"
-          }
-        },
-        "required": [
-          "email",
-          "password",
-          "repeatPassword"
-        ]
-      },
-      "ResetPasswordDTO": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "format": "email",
-            "default": "{{email}}"
-          }
-        },
-        "required": [
-          "email"
-        ]
-      },
-      "UUIDTO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          }
-        }
-      },
-      "ClubAffiliationDTO": {
-        "type": "object",
-        "properties": {
-          "club": {
-            "type": "string"
-          },
-          "country": {
-            "$ref": "#/components/schemas/UUIDTO"
-          },
-          "other": {
-            "type": "string"
-          }
-        }
-      },
-      "UpdateUserDTO": {
-        "type": "object",
-        "properties": {
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "nickname": {
-            "type": "string"
-          },
-          "showNickname": {
-            "type": "boolean"
-          },
-          "gender": {
-            "type": "boolean"
-          },
-          "clubAffiliation": {
-            "$ref": "#/components/schemas/ClubAffiliationDTO"
-          },
-          "address": {
-            "$ref": "#/components/schemas/AddressDTO"
-          }
-        }
-      },
-      "CountryDogDTO": {
-        "type": "object",
-        "properties": {
-          "countryId": {
-            "type": "string",
-            "format": "uuid"
-          }
-        },
-        "required": [
-          "countryId"
-        ]
-      },
-      "OwnerDogDTO": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "format": "uuid"
-          }
-        },
-        "required": [
-          "userId"
-        ]
-      },
-      "KennelDogDTO": {
-        "type": "object",
-        "properties": {
-          "kennelId": {
-            "type": "string",
-            "format": "uuid"
-          }
-        },
-        "required": [
-          "kennelId"
-        ]
-      },
-      "CoOwnerDogDTO": {
-        "type": "object",
-        "properties": {
-          "coOwners": {
-            "format": "uuid",
-            "type": "array",
-            "items": {
-              "type": "string"
+    ],
+    "servers": [],
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "type": "http"
             }
-          }
         },
-        "required": [
-          "coOwners"
-        ]
-      },
-      "DogDTO": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "DateOfDTO": {
-        "type": "object",
-        "properties": {
-          "birth": {
-            "type": "string",
-            "format": "date"
-          },
-          "death": {
-            "type": "string",
-            "format": "date"
-          }
-        }
-      },
-      "ParentsDTO": {
-        "type": "object",
-        "properties": {
-          "male": {
-            "$ref": "#/components/schemas/UUIDTO"
-          },
-          "female": {
-            "$ref": "#/components/schemas/UUIDTO"
-          }
-        }
-      },
-      "Owner": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          }
-        }
-      },
-      "CreateDogDTO": {
-        "type": "object",
-        "properties": {
-          "pedigree": {
-            "$ref": "#/components/schemas/UUIDTO"
-          },
-          "dog": {
-            "$ref": "#/components/schemas/DogDTO"
-          },
-          "gender": {
-            "type": "boolean"
-          },
-          "myDog": {
-            "type": "boolean"
-          },
-          "dateOf": {
-            "$ref": "#/components/schemas/DateOfDTO"
-          },
-          "parents": {
-            "$ref": "#/components/schemas/ParentsDTO"
-          },
-          "isBreeder": {
-            "type": "boolean"
-          },
-          "owner": {
-            "$ref": "#/components/schemas/Owner"
-          },
-          "kennel": {
-            "$ref": "#/components/schemas/UUIDTO"
-          }
-        },
-        "required": [
-          "dog",
-          "gender",
-          "myDog",
-          "dateOf",
-          "parents",
-          "isBreeder",
-          "owner"
-        ]
-      },
-      "CreateDogParentDTO": {
-        "type": "object",
-        "properties": {
-          "gender": {
-            "type": "boolean"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "gender",
-          "name"
-        ]
-      },
-      "ProgenyByParentsDTO": {
-        "type": "object",
-        "properties": {
-          "female": {
-            "$ref": "#/components/schemas/UUIDTO"
-          },
-          "male": {
-            "$ref": "#/components/schemas/UUIDTO"
-          }
-        }
-      },
-      "EssentialDetailsDTO": {
-        "type": "object",
-        "properties": {
-          "nickname": {
-            "type": "string"
-          },
-          "color": {
-            "type": "string"
-          },
-          "dateOf": {
-            "$ref": "#/components/schemas/DateOfDTO"
-          },
-          "breedingLine": {
-            "type": "string"
-          }
-        }
-      },
-      "CardDimensionsDTO": {
-        "type": "object",
-        "properties": {
-          "chestDepth": {
-            "type": "number",
-            "format": "float"
-          },
-          "chestWidth": {
-            "type": "number",
-            "format": "float"
-          },
-          "height": {
-            "type": "number",
-            "format": "float"
-          },
-          "weight": {
-            "type": "number",
-            "format": "float"
-          }
-        }
-      },
-      "CardOtherDTO": {
-        "type": "object",
-        "properties": {
-          "pedigreeNumber": {
-            "type": "string"
-          },
-          "k9IdNumber": {
-            "type": "string"
-          },
-          "chip": {
-            "type": "string"
-          },
-          "clubAffiliation": {
-            "$ref": "#/components/schemas/ClubAffiliationDTO"
-          }
-        }
-      },
-      "CardDTO": {
-        "type": "object",
-        "properties": {
-          "essentialDetails": {
-            "$ref": "#/components/schemas/EssentialDetailsDTO"
-          },
-          "dimensions": {
-            "$ref": "#/components/schemas/CardDimensionsDTO"
-          },
-          "other": {
-            "$ref": "#/components/schemas/CardOtherDTO"
-          }
-        }
-      },
-      "UpdateDogDTO": {
-        "type": "object",
-        "properties": {
-          "gender": {
-            "type": "boolean"
-          },
-          "name": {
-            "type": "string"
-          },
-          "parents": {
-            "$ref": "#/components/schemas/ParentsDTO"
-          },
-          "card": {
-            "$ref": "#/components/schemas/CardDTO"
-          }
-        }
-      },
-      "KennelOAPI": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "title",
-          "description",
-          "image"
-        ]
-      },
-      "CreateKennelDTO": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "title"
-        ]
-      },
-      "BreedOAPI": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
-            "default": "Doberman Pinscher"
-          },
-          "description": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "description",
-          "image"
-        ]
-      },
-      "CreateBreedDTO": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "ArticleOAPI": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "title",
-          "description",
-          "image"
-        ]
-      },
-      "CreateArticleDTO": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "title"
-        ]
-      }
-    }
-  },
-  "paths": {
-    "/api/login": {
-      "post": {
-        "operationId": "AuthController_login",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserLoginDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Token created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TokenJWTOAPI"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
-    "/api/login/{provider}": {
-      "post": {
-        "operationId": "AuthController_loginProvider",
-        "parameters": [
-          {
-            "name": "provider",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProviderLoginDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Token created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TokenJWTOAPI"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
-    "/api/sign-up": {
-      "post": {
-        "operationId": "AuthController_signUp",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserSignUpDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Sign Up"
-          }
-        },
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
-    "/api/reset-password": {
-      "post": {
-        "operationId": "AuthController_resetPassword",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ResetPasswordDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Reset password"
-          }
-        },
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
-    "/api/users": {
-      "get": {
-        "operationId": "UsersController_index",
-        "parameters": [
-          {
-            "name": "page",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "limit",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "search",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of users"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "post": {
-        "operationId": "UsersController_createUser",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Create user"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/users/{id}": {
-      "get": {
-        "operationId": "UsersController_viewUser",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "View user's public  information"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "patch": {
-        "operationId": "UsersController_editUser",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Edit user"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "delete": {
-        "operationId": "UsersController_deleteUser",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Delete user"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/users/{id}/dogs": {
-      "get": {
-        "operationId": "UsersController_viewUserDogs",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "View user's active and past dogs"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/users/{id}/kennels": {
-      "get": {
-        "operationId": "UsersController_viewUserKennels",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "View user's kennels"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/me": {
-      "get": {
-        "operationId": "MeController_me",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Get own information"
-          }
-        },
-        "tags": [
-          "Me"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "patch": {
-        "operationId": "MeController_editMe",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Edit own information"
-          }
-        },
-        "tags": [
-          "Me"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/me/dogs": {
-      "get": {
-        "operationId": "MeController_viewUserDogs",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "View user's active and past dogs"
-          }
-        },
-        "tags": [
-          "Me"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/me/kennels": {
-      "get": {
-        "operationId": "MeController_viewUserKennels",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "View user's kennels"
-          }
-        },
-        "tags": [
-          "Me"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/me/favorites/people": {
-      "get": {
-        "operationId": "MeController_viewUserFavoritesPeople",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "View user's favorites people"
-          }
-        },
-        "tags": [
-          "Me"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/me/favorite/dogs": {
-      "get": {
-        "operationId": "MeController_viewUserFavoritesDogs",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "View user's favorites dogs"
-          }
-        },
-        "tags": [
-          "Me"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/me/favorites/kennels": {
-      "get": {
-        "operationId": "MeController_viewUserFavoritesKennels",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "View user's favorites kennels"
-          }
-        },
-        "tags": [
-          "Me"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/me/avatar": {
-      "post": {
-        "operationId": "MeController_uploadFile",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "multipart/form-data": {
-              "schema": {
+        "schemas": {
+            "UserLoginDTO": {
                 "type": "object",
                 "properties": {
-                  "avatar": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Me"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs": {
-      "get": {
-        "operationId": "DogsController_index",
-        "parameters": [
-          {
-            "name": "page",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "limit",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "search",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "club",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "color",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "birth",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "gender",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "minAge",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "maxAge",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "parent",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "kennel",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "owner",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "alive",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "sort",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "order",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "post": {
-        "operationId": "DogsController_create",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateDogDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/pedigree": {
-      "get": {
-        "operationId": "DogsController_getPedirgee",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/follow": {
-      "get": {
-        "operationId": "DogsController_getFollowed",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "post": {
-        "operationId": "DogsController_follow",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}": {
-      "get": {
-        "operationId": "DogsController_getDog",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "patch": {
-        "operationId": "DogsController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateDogDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "202": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "delete": {
-        "operationId": "DogsController_remove",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "An article has been deleted"
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/siblings": {
-      "get": {
-        "operationId": "DogsController_getSiblings",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/progeny": {
-      "get": {
-        "operationId": "DogsController_getProgeny",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/set-country-of-residence": {
-      "patch": {
-        "operationId": "DogsController_setCountryOfResidence",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CountryDogDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/set-owner": {
-      "patch": {
-        "operationId": "DogsController_setOwner",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/OwnerDogDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/set-kennel": {
-      "patch": {
-        "operationId": "DogsController_setKennel",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/KennelDogDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/set-coowners": {
-      "put": {
-        "operationId": "DogsController_setCoOwners",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CoOwnerDogDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/get-coowners": {
-      "get": {
-        "operationId": "DogsController_getCoOwners",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/add-parent": {
-      "post": {
-        "operationId": "DogsController_addParent",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateDogParentDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/get-progeny-by-parents": {
-      "post": {
-        "operationId": "DogsController_getProgenyByParents",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProgenyByParentsDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/avatar": {
-      "post": {
-        "operationId": "DogsController_uploadFile",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "multipart/form-data": {
-              "schema": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "default": "{{email}}"
+                    },
+                    "password": {
+                        "type": "string",
+                        "default": "{{password}}"
+                    }
+                },
+                "required": [
+                    "email",
+                    "password"
+                ]
+            },
+            "TokenJWTOAPI": {
                 "type": "object",
                 "properties": {
-                  "avatar": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/dogs/{id}/cover": {
-      "post": {
-        "operationId": "DogsController_uploadBackgroundCover",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "multipart/form-data": {
-              "schema": {
+                    "token": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "token"
+                ]
+            },
+            "ProviderLoginDTO": {
                 "type": "object",
                 "properties": {
-                  "cover": {
-                    "type": "string",
-                    "format": "binary"
-                  }
+                    "accessToken": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accessToken"
+                ]
+            },
+            "AddressDTO": {
+                "type": "object",
+                "properties": {
+                    "country": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "zip": {
+                        "type": "string"
+                    }
                 }
-              }
+            },
+            "UserSignUpDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "default": "{{email}}"
+                    },
+                    "password": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "repeatPassword": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "boolean"
+                    },
+                    "address": {
+                        "$ref": "#/components/schemas/AddressDTO"
+                    }
+                },
+                "required": [
+                    "email",
+                    "password",
+                    "repeatPassword"
+                ]
+            },
+            "ResetPasswordDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "default": "{{email}}"
+                    }
+                },
+                "required": [
+                    "email"
+                ]
+            },
+            "UUIDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                }
+            },
+            "ClubAffiliationDTO": {
+                "type": "object",
+                "properties": {
+                    "club": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "$ref": "#/components/schemas/UUIDTO"
+                    },
+                    "other": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UpdateUserDTO": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "nickname": {
+                        "type": "string"
+                    },
+                    "showNickname": {
+                        "type": "boolean"
+                    },
+                    "gender": {
+                        "type": "boolean"
+                    },
+                    "clubAffiliation": {
+                        "$ref": "#/components/schemas/ClubAffiliationDTO"
+                    },
+                    "address": {
+                        "$ref": "#/components/schemas/AddressDTO"
+                    }
+                }
+            },
+            "CountryDogDTO": {
+                "type": "object",
+                "properties": {
+                    "countryId": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "required": [
+                    "countryId"
+                ]
+            },
+            "OwnerDogDTO": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "required": [
+                    "userId"
+                ]
+            },
+            "KennelDogDTO": {
+                "type": "object",
+                "properties": {
+                    "kennelId": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "required": [
+                    "kennelId"
+                ]
+            },
+            "CoOwnerDogDTO": {
+                "type": "object",
+                "properties": {
+                    "coOwners": {
+                        "format": "uuid",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "coOwners"
+                ]
+            },
+            "DogDTO": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "DateOfDTO": {
+                "type": "object",
+                "properties": {
+                    "birth": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "death": {
+                        "type": "string",
+                        "format": "date"
+                    }
+                }
+            },
+            "ParentsDTO": {
+                "type": "object",
+                "properties": {
+                    "male": {
+                        "$ref": "#/components/schemas/UUIDTO"
+                    },
+                    "female": {
+                        "$ref": "#/components/schemas/UUIDTO"
+                    }
+                }
+            },
+            "Owner": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                }
+            },
+            "CreateDogDTO": {
+                "type": "object",
+                "properties": {
+                    "pedigree": {
+                        "$ref": "#/components/schemas/UUIDTO"
+                    },
+                    "dog": {
+                        "$ref": "#/components/schemas/DogDTO"
+                    },
+                    "gender": {
+                        "type": "boolean"
+                    },
+                    "myDog": {
+                        "type": "boolean"
+                    },
+                    "dateOf": {
+                        "$ref": "#/components/schemas/DateOfDTO"
+                    },
+                    "parents": {
+                        "$ref": "#/components/schemas/ParentsDTO"
+                    },
+                    "isBreeder": {
+                        "type": "boolean"
+                    },
+                    "owner": {
+                        "$ref": "#/components/schemas/Owner"
+                    },
+                    "kennel": {
+                        "$ref": "#/components/schemas/UUIDTO"
+                    }
+                },
+                "required": [
+                    "dog",
+                    "gender",
+                    "myDog",
+                    "dateOf",
+                    "parents",
+                    "isBreeder",
+                    "owner"
+                ]
+            },
+            "CreateDogParentDTO": {
+                "type": "object",
+                "properties": {
+                    "gender": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "gender",
+                    "name"
+                ]
+            },
+            "ProgenyByParentsDTO": {
+                "type": "object",
+                "properties": {
+                    "female": {
+                        "$ref": "#/components/schemas/UUIDTO"
+                    },
+                    "male": {
+                        "$ref": "#/components/schemas/UUIDTO"
+                    }
+                }
+            },
+            "EssentialDetailsDTO": {
+                "type": "object",
+                "properties": {
+                    "nickname": {
+                        "type": "string"
+                    },
+                    "color": {
+                        "type": "string"
+                    },
+                    "dateOf": {
+                        "$ref": "#/components/schemas/DateOfDTO"
+                    },
+                    "breedingLine": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CardDimensionsDTO": {
+                "type": "object",
+                "properties": {
+                    "chestDepth": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "chestWidth": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "height": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "weight": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                }
+            },
+            "CardOtherDTO": {
+                "type": "object",
+                "properties": {
+                    "pedigreeNumber": {
+                        "type": "string"
+                    },
+                    "k9IdNumber": {
+                        "type": "string"
+                    },
+                    "chip": {
+                        "type": "string"
+                    },
+                    "clubAffiliation": {
+                        "$ref": "#/components/schemas/ClubAffiliationDTO"
+                    }
+                }
+            },
+            "CardDTO": {
+                "type": "object",
+                "properties": {
+                    "essentialDetails": {
+                        "$ref": "#/components/schemas/EssentialDetailsDTO"
+                    },
+                    "dimensions": {
+                        "$ref": "#/components/schemas/CardDimensionsDTO"
+                    },
+                    "other": {
+                        "$ref": "#/components/schemas/CardOtherDTO"
+                    }
+                }
+            },
+            "UpdateDogDTO": {
+                "type": "object",
+                "properties": {
+                    "gender": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "parents": {
+                        "$ref": "#/components/schemas/ParentsDTO"
+                    },
+                    "card": {
+                        "$ref": "#/components/schemas/CardDTO"
+                    }
+                }
+            },
+            "KennelOAPI": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "title",
+                    "description",
+                    "image"
+                ]
+            },
+            "CreateKennelDTO": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "title"
+                ]
+            },
+            "BreedOAPI": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "default": "Doberman Pinscher"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "image"
+                ]
+            },
+            "CreateBreedDTO": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "ArticleOAPI": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "title",
+                    "description",
+                    "image"
+                ]
+            },
+            "CreateArticleDTO": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "title"
+                ]
             }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Dogs"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
+        }
     },
-    "/api/kennels": {
-      "get": {
-        "operationId": "KennelsController_index",
-        "parameters": [
-          {
-            "name": "page",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "number"
+    "paths": {
+        "/api/login": {
+            "post": {
+                "operationId": "AuthController_login",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLoginDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Token created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenJWTOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Auth"
+                ]
             }
-          },
-          {
-            "name": "limit",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "search",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
         },
-        "tags": [
-          "Kennels"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "post": {
-        "operationId": "KennelsController_create",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateKennelDTO"
-              }
+        "/api/login/{provider}": {
+            "post": {
+                "operationId": "AuthController_loginProvider",
+                "parameters": [
+                    {
+                        "name": "provider",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProviderLoginDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Token created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenJWTOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Auth"
+                ]
             }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "A new kennel has been created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/KennelOAPI"
-                }
-              }
+        "/api/sign-up": {
+            "post": {
+                "operationId": "AuthController_signUp",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserSignUpDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sign Up"
+                    }
+                },
+                "tags": [
+                    "Auth"
+                ]
             }
-          }
         },
-        "tags": [
-          "Kennels"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/kennels/{id}": {
-      "get": {
-        "operationId": "KennelsController_view",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/reset-password": {
+            "post": {
+                "operationId": "AuthController_resetPassword",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetPasswordDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Reset password"
+                    }
+                },
+                "tags": [
+                    "Auth"
+                ]
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "View a kennel",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/KennelOAPI"
-                }
-              }
-            }
-          }
         },
-        "tags": [
-          "Kennels"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "patch": {
-        "operationId": "KennelsController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/users": {
+            "get": {
+                "operationId": "UsersController_index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of users"
+                    }
+                },
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "UsersController_createUser",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Create user"
+                    }
+                },
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateKennelDTO"
-              }
-            }
-          }
         },
-        "responses": {
-          "200": {
-            "description": "A kennel has been updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/KennelOAPI"
-                }
-              }
+        "/api/users/{id}": {
+            "get": {
+                "operationId": "UsersController_viewUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View user's public  information"
+                    }
+                },
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "UsersController_editUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Edit user"
+                    }
+                },
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "UsersController_deleteUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Delete user"
+                    }
+                },
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "tags": [
-          "Kennels"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "delete": {
-        "operationId": "KennelsController_remove",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/users/{id}/dogs": {
+            "get": {
+                "operationId": "UsersController_viewUserDogs",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View user's active and past dogs"
+                    }
+                },
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "An article has been deleted"
-          }
         },
-        "tags": [
-          "Kennels"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/homepage": {
-      "get": {
-        "operationId": "HomepageController_index",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
+        "/api/users/{id}/kennels": {
+            "get": {
+                "operationId": "UsersController_viewUserKennels",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View user's kennels"
+                    }
+                },
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
         },
-        "tags": [
-          "Homepage"
-        ]
-      }
-    },
-    "/api/breeds": {
-      "get": {
-        "operationId": "BreedsController_index",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "List of available breeds",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BreedOAPI"
-                  }
-                }
-              }
+        "/api/me": {
+            "get": {
+                "operationId": "MeController_me",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Get own information"
+                    }
+                },
+                "tags": [
+                    "Me"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "MeController_editMe",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Edit own information"
+                    }
+                },
+                "tags": [
+                    "Me"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "tags": [
-          "Breeds"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "post": {
-        "operationId": "BreedsController_create",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateBreedDTO"
-              }
+        "/api/me/dogs": {
+            "get": {
+                "operationId": "MeController_viewUserDogs",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "View user's active and past dogs"
+                    }
+                },
+                "tags": [
+                    "Me"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "A new breed has been created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BreedOAPI"
-                }
-              }
+        "/api/me/kennels": {
+            "get": {
+                "operationId": "MeController_viewUserKennels",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "View user's kennels"
+                    }
+                },
+                "tags": [
+                    "Me"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "tags": [
-          "Breeds"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/breeds/{id}": {
-      "get": {
-        "operationId": "BreedsController_view",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/me/favorites/people": {
+            "get": {
+                "operationId": "MeController_viewUserFavoritesPeople",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "View user's favorites people"
+                    }
+                },
+                "tags": [
+                    "Me"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "View breed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BreedOAPI"
-                }
-              }
-            }
-          }
         },
-        "tags": [
-          "Breeds"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "patch": {
-        "operationId": "BreedsController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/me/favorite/dogs": {
+            "get": {
+                "operationId": "MeController_viewUserFavoritesDogs",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "View user's favorites dogs"
+                    }
+                },
+                "tags": [
+                    "Me"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateBreedDTO"
-              }
-            }
-          }
         },
-        "responses": {
-          "200": {
-            "description": "A new breed has been updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BreedOAPI"
-                }
-              }
+        "/api/me/favorites/kennels": {
+            "get": {
+                "operationId": "MeController_viewUserFavoritesKennels",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "View user's favorites kennels"
+                    }
+                },
+                "tags": [
+                    "Me"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "tags": [
-          "Breeds"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "delete": {
-        "operationId": "BreedsController_remove",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/me/avatar": {
+            "post": {
+                "operationId": "MeController_uploadFile",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "avatar": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Me"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "A breed has been deleted"
-          }
         },
-        "tags": [
-          "Breeds"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/knowledge-base": {
-      "get": {
-        "operationId": "KnowledgeBaseController_index",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "List of available articles",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ArticleOAPI"
-                  }
-                }
-              }
+        "/api/dogs": {
+            "get": {
+                "operationId": "DogsController_index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "club",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "birth",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "minAge",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "maxAge",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "parent",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "kennel",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "owner",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "alive",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "DogsController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDogDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "tags": [
-          "Knowledge Base"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "post": {
-        "operationId": "KnowledgeBaseController_create",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateArticleDTO"
-              }
+        "/api/dogs/{id}/pedigree": {
+            "get": {
+                "operationId": "DogsController_getPedirgee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "A new article has been created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleOAPI"
-                }
-              }
+        "/api/dogs/{id}/follow": {
+            "get": {
+                "operationId": "DogsController_getFollowed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "DogsController_follow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "tags": [
-          "Knowledge Base"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/knowledge-base/{id}": {
-      "get": {
-        "operationId": "KnowledgeBaseController_view",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/dogs/{id}": {
+            "get": {
+                "operationId": "DogsController_getDog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "DogsController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDogDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "DogsController_remove",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "An article has been deleted"
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "View an article",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleOAPI"
-                }
-              }
-            }
-          }
         },
-        "tags": [
-          "Knowledge Base"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "patch": {
-        "operationId": "KnowledgeBaseController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/dogs/{id}/siblings": {
+            "get": {
+                "operationId": "DogsController_getSiblings",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateArticleDTO"
-              }
-            }
-          }
         },
-        "responses": {
-          "200": {
-            "description": "An article has been updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ArticleOAPI"
-                }
-              }
+        "/api/dogs/{id}/progeny": {
+            "get": {
+                "operationId": "DogsController_getProgeny",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
         },
-        "tags": [
-          "Knowledge Base"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      },
-      "delete": {
-        "operationId": "KnowledgeBaseController_remove",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
+        "/api/dogs/{id}/set-country-of-residence": {
+            "patch": {
+                "operationId": "DogsController_setCountryOfResidence",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CountryDogDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "An article has been deleted"
-          }
         },
-        "tags": [
-          "Knowledge Base"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/causes-of-death": {
-      "get": {
-        "operationId": "CausesOfDeathController_index",
-        "parameters": [
-          {
-            "name": "page",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "number"
+        "/api/dogs/{id}/set-owner": {
+            "patch": {
+                "operationId": "DogsController_setOwner",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OwnerDogDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          },
-          {
-            "name": "limit",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "search",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of available causes of death"
-          }
         },
-        "tags": [
-          "Causes Of Death"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/api/address/countries": {
-      "get": {
-        "operationId": "AddressController_index",
-        "parameters": [
-          {
-            "name": "page",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "number"
+        "/api/dogs/{id}/set-kennel": {
+            "patch": {
+                "operationId": "DogsController_setKennel",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/KennelDogDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
             }
-          },
-          {
-            "name": "limit",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "search",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of available countries"
-          }
         },
-        "tags": [
-          "Address"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
+        "/api/dogs/{id}/set-coowners": {
+            "put": {
+                "operationId": "DogsController_setCoOwners",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CoOwnerDogDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/dogs/{id}/get-coowners": {
+            "get": {
+                "operationId": "DogsController_getCoOwners",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/dogs/add-parent": {
+            "post": {
+                "operationId": "DogsController_addParent",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDogParentDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/dogs/get-progeny-by-parents": {
+            "post": {
+                "operationId": "DogsController_getProgenyByParents",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProgenyByParentsDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/dogs/{id}/avatar": {
+            "post": {
+                "operationId": "DogsController_uploadFile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "avatar": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/dogs/{id}/cover": {
+            "post": {
+                "operationId": "DogsController_uploadBackgroundCover",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "cover": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Dogs"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/kennels": {
+            "get": {
+                "operationId": "KennelsController_index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Kennels"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "KennelsController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateKennelDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "A new kennel has been created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/KennelOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Kennels"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/kennels/{id}": {
+            "get": {
+                "operationId": "KennelsController_view",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View a kennel",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/KennelOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Kennels"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "KennelsController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateKennelDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "A kennel has been updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/KennelOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Kennels"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "KennelsController_remove",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "An article has been deleted"
+                    }
+                },
+                "tags": [
+                    "Kennels"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/homepage": {
+            "get": {
+                "operationId": "HomepageController_index",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Homepage"
+                ]
+            }
+        },
+        "/api/breeds": {
+            "get": {
+                "operationId": "BreedsController_index",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "List of available breeds",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/BreedOAPI"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Breeds"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "BreedsController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateBreedDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "A new breed has been created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BreedOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Breeds"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/breeds/{id}": {
+            "get": {
+                "operationId": "BreedsController_view",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View breed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BreedOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Breeds"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "BreedsController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateBreedDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "A new breed has been updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BreedOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Breeds"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "BreedsController_remove",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "A breed has been deleted"
+                    }
+                },
+                "tags": [
+                    "Breeds"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/knowledge-base": {
+            "get": {
+                "operationId": "KnowledgeBaseController_index",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "List of available articles",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ArticleOAPI"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Knowledge Base"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "KnowledgeBaseController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateArticleDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "A new article has been created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ArticleOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Knowledge Base"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/knowledge-base/{id}": {
+            "get": {
+                "operationId": "KnowledgeBaseController_view",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View an article",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ArticleOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Knowledge Base"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "KnowledgeBaseController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateArticleDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "An article has been updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ArticleOAPI"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Knowledge Base"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "KnowledgeBaseController_remove",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "An article has been deleted"
+                    }
+                },
+                "tags": [
+                    "Knowledge Base"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/causes-of-death": {
+            "get": {
+                "operationId": "CausesOfDeathController_index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of available causes of death"
+                    }
+                },
+                "tags": [
+                    "Causes Of Death"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/address/countries": {
+            "get": {
+                "operationId": "AddressController_index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "required": false,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of available countries"
+                    }
+                },
+                "tags": [
+                    "Address"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        }
     }
-  }
 }
